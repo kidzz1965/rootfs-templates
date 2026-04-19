@@ -34,6 +34,23 @@ actions:
     packages:
       - droidian-phosh-full
 
+  - action: run
+    chroot: true
+    description: fix gnome-control-center + gtk4 conflict
+    script: |
+      apt update
+      apt full-upgrade -y
+      
+      # Paksa upgrade gnome-control-center ke versi yang compatible (>=50)
+      apt install -y gnome-control-center
+
+   # Install phosh full setelah conflict diatasi
+  - action: apt
+    chroot: true
+    description: install droidian-phosh
+    packages:
+      - droidian-phosh-full
+      
 {{ if eq $variant "phone" }}
   - action: apt
     chroot: true
