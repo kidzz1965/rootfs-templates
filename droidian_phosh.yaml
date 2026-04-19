@@ -49,7 +49,7 @@ actions:
     chroot: true
     description: install droidian-phosh
     packages:
-      - droidian-phosh-full
+      - droidian-phosh-minimal
       
 {{ if eq $variant "phone" }}
   - action: apt
