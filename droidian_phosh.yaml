@@ -28,12 +28,6 @@ actions:
       password: {{ $password }}
       hostname: {{ $hostname }}
 
-  - action: apt
-    chroot: true
-    description: install droidian-phosh
-    packages:
-      - droidian-phosh-full
-
 {{ if eq $variant "phone" }}
   - action: apt
     chroot: true
