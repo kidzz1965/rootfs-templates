@@ -42,10 +42,10 @@ actions:
       - droidian-phosh-phone
 {{end}}
 
-- action: apt
-  chroot: true
-  description: install adaptation (hardware layer)
-  packages:
+  - action: apt
+    chroot: true
+    description: install adaptation (hardware layer)
+    packages:
       - adaptation-hybris-api{{ $apilevel }}-phone
   
 {{ if eq $version "next" }}
