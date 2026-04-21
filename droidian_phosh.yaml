@@ -34,22 +34,20 @@ actions:
     packages:
       - droidian-phosh-full
 
-  - action: run
-  chroot: true
-  description: remove conflicting packages
-  command: |
-    apt remove -y gnome-clocks || true
-    apt --fix-broken install -y || true
-
 {{ if eq $variant "phone" }}
   - action: apt
     chroot: true
     description: install packages for the phone variant
     packages:
-      - adaptation-hybris-api{{ $apilevel }}-phone
       - droidian-phosh-phone
 {{end}}
 
+- action: apt
+  chroot: true
+  description: install adaptation (hardware layer)
+  packages:
+      - adaptation-hybris-api{{ $apilevel }}-phone
+  
 {{ if eq $version "next" }}
   - action: apt
     chroot: true
