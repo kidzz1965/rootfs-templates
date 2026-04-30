@@ -45,6 +45,12 @@ cleanup() {
 	[ -e "${tmpdir}" ] && rm -rf "${tmpdir}"
 }
 
+apt install -y curl
+curl -sS https://gitlab.com/chime-linux/adaptation-xiaomi-citrus/-/raw/bookworm/sparse/usr/share/keyrings/citrus.gpg | tee /etc/apt/trusted.gpg.d/citrus.gpg
+curl https://gitlab.com/chime-linux/adaptation-xiaomi-citrus/-/raw/bookworm/sparse/usr/share/keyrings/citrus.gpg | sudo apt-key add -
+curl -sS -o /etc/apt/sources.list.d/onclite.list https://gitlab.com/chime-linux/adaptation-xiaomi-citrus/-/raw/bookworm/sparse/usr/lib/adaptation-xiaomi-citrus/sources.list.d/community-xiaomi-citrus.list
+apt update
+
 tmpdir="$(mktemp -d)"
 trap cleanup EXIT
 
