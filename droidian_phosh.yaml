@@ -28,14 +28,6 @@ actions:
       password: {{ $password }}
       hostname: {{ $hostname }}
 
-  - name: Fix apt dependencies
-    run: |
-      apt update
-      apt upgrade -y
-      apt --fix-broken install -y
-      apt autoremove -y
-      apt install -f
-    
 {{ if eq $variant "phone" }}
   - action: apt
     chroot: true
